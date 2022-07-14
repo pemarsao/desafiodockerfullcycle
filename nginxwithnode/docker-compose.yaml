@@ -19,11 +19,9 @@ services:
     build: 
       context: ./node
     container_name: app
-    entrypoint: dockerize -wait tcp://dbmysql:3306 -timeout 20s docker-entrypoint.sh node index.js
+    entrypoint: dockerize -wait tcp://dbmysql:3306 -timeout 40s node index.js
     networks: 
       - node-network
-    volumes: 
-      - ./node:/usr/src/app
     tty: true
     depends_on: 
       - dbmysql
